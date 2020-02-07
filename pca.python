@@ -6,12 +6,9 @@ import matplotlib.pyplot as plt
 with gzip.open("dataset/mnist.pkl.gz") as f:
     train_set, valid_set, test_set = pickle.load(f, encoding="bytes")
 
+numEle = train_set[0].shape[0] # get number of elements in the training set
+pixels = train_set[0][np.random.randint(low = 0, high = numEle)] # get a random index between 0 and numEle (exclusive)
 
-numelements = train_set[0].shape[0] # getting the numelements from the size of train_set[0]
-
-randomNum = np.random.randint(low=0, high=numelements, size=1)
-pixels = train_set[0][randomNum].reshape((28, 28))
-print(randomNum)
-
+pixels = pixels.reshape((28, 28))
 plt.imshow(pixels, cmap='gray')
 plt.show()
